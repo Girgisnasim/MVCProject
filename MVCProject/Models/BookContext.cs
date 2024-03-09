@@ -7,14 +7,13 @@ namespace MVCProject.Models
     public class BookContext:DbContext
     {
 
-        public BookContext()
-        {
-            
-        }
+        public BookContext(){}
+        public BookContext(DbContextOptions options) : base(options) { }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 
-          => optionsBuilder.UseSqlServer("Data Source=DESKTOP-84KCKJI\\SQLEXPRESS;Initial Catalog=BookDb;Integrated Security=True;TrustServerCertificate=True");
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+
+        //  => optionsBuilder.UseSqlServer("Data Source=DESKTOP-84KCKJI\\SQLEXPRESS;Initial Catalog=BookDb;Integrated Security=True;TrustServerCertificate=True");
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
