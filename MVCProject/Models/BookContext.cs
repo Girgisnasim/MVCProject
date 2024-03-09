@@ -14,7 +14,7 @@ namespace MVCProject.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 
-          => optionsBuilder.UseSqlServer("Data Source=DESKTOP-84KCKJI\\SQLEXPRESS;Initial Catalog=BookDb;Integrated Security=True;TrustServerCertificate=True");
+          => optionsBuilder.UseSqlServer("Data Source=.;Initial Catalog=BookDb;Integrated Security=True;TrustServerCertificate=True");
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
