@@ -1,3 +1,7 @@
+using Microsoft.EntityFrameworkCore;
+using MVCProject.Models;
+using MVCProject.Repositories;
+
 namespace MVCProject
 {
     public class Program
@@ -9,6 +13,11 @@ namespace MVCProject
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
+            builder.Services.AddDbContext<BookContext>(options=>
+            options.UseSqlServer(builder.Configuration.GetConnectionString("conn")));
+
+            builder.Services.AddScoped<ICustomerRepo, CustomerRepo>();
+            builder.Services.AddScoped<ITicketsRepo, TicketsRepo>();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
