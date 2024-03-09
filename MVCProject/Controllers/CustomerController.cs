@@ -24,14 +24,5 @@ namespace MVCProject.Controllers
             return View();
         }
 
-
-        //Delete ticket
-        public IActionResult DeleteTicket()
-        {
-            return View();
-        }
-
-
-
     }
 }
