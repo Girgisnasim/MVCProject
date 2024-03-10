@@ -4,9 +4,9 @@ namespace MVCProject.Repositories
 {
     public interface ITicketsRepo
     {
-        // to show all of tickets available
-        public List<Trip> GetAllTrips();
+        // to show  ticket 
+        public Trip showTicket(int id);
         //Add ticket
-        public int Add (Trip trip);
+        public void Add (Ticket ticket);
     }
 }

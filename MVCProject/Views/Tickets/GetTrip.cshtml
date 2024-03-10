@@ -1,0 +1,42 @@
+﻿@model Trip
+
+<div class="container">
+    <div class="row">
+        <div class="col m-2 d-flex justify-content-center align-items-center">
+
+            <div class="card" style="width: 18rem;">
+                <img src="~/assets/images/04.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">@Model.Name</h5>
+                    <p class="card-text"><strong>Location:</strong> @Model.Location</p>
+                    <p class="card-text"><strong>Status:</strong> <span id="Status">@Model.Status</span></p>
+                    <p class="card-text"><strong>Total Seats:</strong> @Model.Seats_Num</p>
+                    <p class="card-text">
+                        <strong>Available Seats:</strong>
+                        <span id="Stock" data-value="@Model.Available_Seats">@Model.Available_Seats</span>
+                    </p>
+                    <p class="card-text"><strong>Price:</strong> $@Model.Price</p>
+                    <p class="card-text"><strong>Arrival Time:</strong> @Model.Arrival_Time</p>
+                    <p class="card-text"><strong>Departure Date:</strong> @Model.Departure_Date</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <form asp-action="AddTicket" asp-controller="Tickets" method="post">
+        <input hidden value="@Model.Id" name="TripId" />
+        <input hidden value="4" name="CustomerId" />
+        <input hidden id="HiddenStock" name="HiddenStock" />
+
+        <div class="mb-3">
+            <label for="NumberOfTickets" class="form-label">Enter Number of Tickets you want:</label>
+            <input type="number" class="form-control" id="NumberOfTickets" name="Quentity" >
+        </div>
+        <button class="btn btn-success" onclick="Add()">Book Now!</button>
+    </form>
+</div>
+
+@section Station {
+    <script src="~/js/Ticket.js"></script>
+}

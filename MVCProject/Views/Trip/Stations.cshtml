@@ -1,0 +1,21 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+
+}
+@model SelectList
+<select class="form-select"  asp-items="@Model" onchange="GetStation(this.value)">
+ 
+
+</select>
+<div class="container mx-auto ">
+    <div id="Station" class="row">
+
+    </div>
+</div>
+@section Station{
+        
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/Stations.js"></script>
+}
