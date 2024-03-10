@@ -7,6 +7,6 @@ namespace MVCProject.Repositories
         // to show  ticket 
         public Trip showTicket(int id);
         //Add ticket
-        public int Add (Trip trip);
+        public void Add (Ticket ticket);
     }
 }

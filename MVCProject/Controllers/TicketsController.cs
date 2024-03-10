@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MVCProject.Models;
 using MVCProject.Repositories;
 
 namespace MVCProject.Controllers
@@ -17,9 +18,10 @@ namespace MVCProject.Controllers
             return View(ticketRepo.showTicket(id));
         }
         //Add ticket
-        public IActionResult AddTicket()
+        public IActionResult AddTicket(Ticket ticket)
         {
-            return View();
+            ticketRepo.Add(ticket);
+            return RedirectToAction("Stations","Trip");
         }
     }
 }
