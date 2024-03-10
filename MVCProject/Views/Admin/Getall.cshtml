@@ -1,0 +1,78 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "_Layout";
+    int i=1;
+}
+@model List<Trip>
+<h1> Company Trips </h1>
+<style>
+
+    h1 {
+        color: black;
+        text-align: center;
+        margin-top: 100px
+    }
+
+    .trips {
+        margin-top: 50px;
+        margin-bottom: 100px;
+    }
+
+    p {
+        text-align: center;
+    }
+</style>
+<div class="trips">
+
+    <table class="table">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col"> Number</th>
+                <th scope="col">Image</th>
+                <th scope="col">Name</th>
+                <th scope="col">Location</th>
+                <th scope="col">Price</th>
+                <th scope="col">Status</th>
+                <th scope="col">Avalabile seats</th>
+                <th scope="col">Total Seats </th>
+                <th scope="col">Arrivale Time</th>
+                <th scope="col">Departure Time</th>
+                <th scope="col">Departure Date</th>
+                <th scope="col">Handels</th>
+               
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <th scope="row">@(i++)</th>
+                    <td><img src="@item.image" style="width:100px;height:100px" alt="image" /></td>
+                    <td>@item.Name</td>
+                    <td>@item.Location</td>
+                    <td>@item.Price</td>
+                    <td>@item.Status</td>
+                    <td>@item.Available_Seats</td>
+                    <td>@item.Total_Seats</td>
+                    <td>@item.Arrival_Time</td>
+                    <td>@item.Departure_Time</td>
+                    <td>@item.Departure_Date</td>
+                    <td>
+
+                        <button onclick="window.location.href='/Admin/update/@item.Id'" class="btn btn-outline-primary"> Upate Trip </button>
+                        <button onclick="window.location.href='/Admin/delete/@item.Id'" class="btn btn-outline-primary"> delete  </button>
+
+
+
+                    </td>
+
+
+                  
+                </tr>
+            }
+        </tbody>
+    </table>
+    <a class="btn btn-outline-primary" href="/Admin/Add">Add New Trip</a>
+</div>
