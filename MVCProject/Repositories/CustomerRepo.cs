@@ -11,15 +11,11 @@ namespace MVCProject.Repositories
             this.context = context;
         }
 
-        public List<Ticket> GetAll()
+        public List<Trip> GetAll()
         {
-            return context.tickets.ToList();
+            return context.trips.ToList();
         }
 
-        public void Delete(int id)
-        {
-            throw new NotImplementedException();
-        }
 
     }
 }

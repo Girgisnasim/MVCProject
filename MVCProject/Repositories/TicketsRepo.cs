@@ -1,4 +1,5 @@
-﻿using MVCProject.Models;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using MVCProject.Models;
 
 namespace MVCProject.Repositories
 {
@@ -11,14 +12,15 @@ namespace MVCProject.Repositories
             this.context = context;
         }
 
-        public List<Trip> GetAllTrips()
+        public int Add(Trip trip)
         {
             throw new NotImplementedException();
         }
 
-        public int Add(Trip trip)
+        public Trip showTicket(int id)
         {
-            throw new NotImplementedException();
+            Trip ticket = context.trips.SingleOrDefault(x => x.Id == id);
+            return ticket;
         }
     }
 }

@@ -12,9 +12,9 @@ namespace MVCProject.Controllers
         }
 
         // to show all of tickets available
-        public IActionResult getAll()
+        public IActionResult GetTrip(int id)
         {
-            return View();
+            return View(ticketRepo.showTicket(id));
         }
         //Add ticket
         public IActionResult AddTicket()
