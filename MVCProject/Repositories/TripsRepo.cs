@@ -11,6 +11,11 @@ namespace MVCProject.Repositories
             this.context = context;
         }
 
+        public List<Trip> AllTrips()
+        {
+            return context.trips.ToList();
+        }
+
         public List<string> GetLoctions()
         {
             List<string> Station = context.trips.Select(t => t.Location).Distinct().ToList();

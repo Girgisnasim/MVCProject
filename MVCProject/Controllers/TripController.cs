@@ -16,6 +16,8 @@ namespace MVCProject.Controllers
         {
             ViewBag.Trip = tripsRepo.GetLoctions();
             SelectList tripsLoction=new SelectList(ViewBag.Trip);
+            var allTrips = tripsRepo.AllTrips();
+            ViewBag.AllTrips = allTrips;
             return View(tripsLoction);
         }
         public IActionResult GetStation(string name1) 
@@ -23,5 +25,6 @@ namespace MVCProject.Controllers
             List<Trip> trips= tripsRepo.GetStation(name1);
             return PartialView("_Stationpartial",trips);
         }
+
     }
 }

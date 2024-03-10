@@ -26,14 +26,14 @@
 
     <form asp-action="AddTicket" asp-controller="Tickets" method="post">
         <input hidden value="@Model.Id" name="TripId" />
-        <input hidden value="4" name="CustomerId" />
+        <input hidden value="5" name="CustomerId" />
         <input hidden id="HiddenStock" name="HiddenStock" />
 
         <div class="mb-3">
             <label for="NumberOfTickets" class="form-label">Enter Number of Tickets you want:</label>
             <input type="number" class="form-control" id="NumberOfTickets" name="Quentity" >
         </div>
-        <button class="btn btn-success" onclick="Add()">Book Now!</button>
+        <button id="FormBtn" class="btn btn-success" onclick="Add()" >Book Now!</button>
     </form>
 </div>
 

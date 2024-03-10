@@ -8,5 +8,7 @@ namespace MVCProject.Repositories
         public List<string> GetLoctions();
         //Get station
         public List<Trip> GetStation(string name1);
+        //Get All Trips
+        public List<Trip> AllTrips();
     }
 }
