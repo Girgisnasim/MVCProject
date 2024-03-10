@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using MVCProject.Models;
 
 namespace MVCProject.Repositories
@@ -18,11 +19,26 @@ namespace MVCProject.Repositories
             if (trip!=null)
             {
                 trip.Available_Seats = trip.Available_Seats - ticket.Quentity;
+                if (trip.Available_Seats == 0)
+                {
+                    trip.Status = "Not Active";
+                }
+                else
+                {
+                    trip.Status = "Active";
+                }
                 context.trips.Update(trip);
                 context.SaveChanges();
                 context.tickets.Add(ticket);
                 context.SaveChanges();
             }
+
+        }
+
+        public List<Ticket> GetTicketsOfUser(int id)
+        {
+           List<Ticket> tickets = context.tickets.Include(t => t.Trip).Where(t => t.CustomerId == id).ToList();
+            return tickets;
         }
 
         public Trip showTicket(int id)

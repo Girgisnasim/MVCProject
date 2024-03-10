@@ -7,4 +7,5 @@
             area.innerHTML = result;
         }
     });
+
 }

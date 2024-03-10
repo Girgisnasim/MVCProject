@@ -9,11 +9,31 @@
  
 
 </select>
-<div class="container mx-auto ">
-    <div id="Station" class="row">
-
+<div class="container">
+    <div id="Station" class="row justify-content-center">
+        @foreach (var t in ViewBag.AllTrips)
+        {
+            <div class="col-lg-3 col-md-6 col-sm-12 m-2">
+                <div class="card" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                    <img src="~/assets/images/04.jpg" class="card-img-top" style="height: 200px; object-fit: cover;" alt="Trip Image">
+                    <div class="card-body">
+                        <h5 class="card-title">@t.Name</h5>
+                        <p class="card-text"><strong>Location:</strong> @t.Location</p>
+                        <p class="card-text"><strong>Status:</strong> @t.Status</p>
+                        <p class="card-text"><strong>Total Seats:</strong> @t.Seats_Num</p>
+                        <p class="card-text"><strong>Available Seats:</strong> @t.Available_Seats</p>
+                        <p class="card-text"><strong>Price:</strong> $@t.Price</p>
+                        <p class="card-text"><strong>Arrival Time:</strong> @t.Arrival_Time</p>
+                        <p class="card-text"><strong>Departure Date:</strong> @t.Departure_Date</p>
+                        <a class="btn btn-success" href="~/Tickets/GetTrip/@t.Id">Book Now!</a>
+                    </div>
+                </div>
+            </div>
+        }
     </div>
 </div>
+
+
 @section Station{
         
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

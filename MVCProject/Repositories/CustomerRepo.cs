@@ -1,4 +1,6 @@
-﻿using MVCProject.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using MVCProject.Models;
+
 
 namespace MVCProject.Repositories
 {
@@ -11,11 +13,11 @@ namespace MVCProject.Repositories
             this.context = context;
         }
 
-        public List<Trip> GetAll()
+        public Customer GetById(int id)
         {
-            return context.trips.ToList();
+            Customer customer = context.customers.SingleOrDefault(x => x.Id == id);
+            
+            return customer;
         }
-
-
     }
 }

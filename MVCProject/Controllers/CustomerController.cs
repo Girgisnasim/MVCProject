@@ -7,21 +7,19 @@ namespace MVCProject.Controllers
     public class CustomerController : Controller
     {
         private ICustomerRepo customerRepo;
-        public CustomerController(ICustomerRepo customerRepo)
+        private ITicketsRepo ticketsRepo;
+        public CustomerController(ICustomerRepo customerRepo,ITicketsRepo ticketsRepo)
         {
             this.customerRepo = customerRepo;
-        }
-
-        //show all booking ticket for this customer
-        public IActionResult BookedTickets() 
-        {  
-            return View(customerRepo.GetAll());
+            this.ticketsRepo = ticketsRepo;
         }
         
         //get by id =>Details or profile page
         public IActionResult profile(int id)
         {
-            return View();
+            List<Ticket> ticketList = ticketsRepo.GetTicketsOfUser(id);
+            ViewBag.TicketsOfUser=ticketList;
+            return View(customerRepo.GetById(id));
         }
 
     }

@@ -3,6 +3,7 @@ var Stock = document.getElementById("Stock");
 var HiddenStock = document.getElementById("HiddenStock");
 var Status = document.getElementById("Status");
 
+
 function Add() {
     // Parse input values as integers
     var quantityValue = parseInt(Quantity.value);
@@ -32,12 +33,20 @@ function Add() {
     HiddenStock.value = newStockValue;
 
     // Update status based on remaining stock
-    if (newStockValue === 0) {
-        Status.innerText = "Not Available";
-    } else {
-        // Reset the status if stock is available
-        Status.innerText = "Active";
+    if (newStockValue == 0) {
+        Status.textContent = "Not Active";
     }
-
     console.log("Remaining stock: " + newStockValue);
+    
+}
+
+window.onload =function() {
+    var statusValue = document.getElementById("Status").innerText;
+    var btn = document.getElementById("FormBtn");
+
+    if (statusValue === "Not Active") {
+        btn.disabled = true;
+    } else {
+        btn.disabled = false;
+    }
 }
