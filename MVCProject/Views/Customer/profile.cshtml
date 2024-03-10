@@ -2,6 +2,7 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
+    int i=0;
 }
 @model Customer
 <div class="row justify-content-center">
@@ -16,3 +17,25 @@
         </div>
     </div>
 </div>
+<table class="table table-striped-columns bg-dark">
+    <thead>
+        <tr class="text-light">
+            <th scope="col">#</th>
+            <th scope="col">Trip Name</th>
+            <th scope="col">Number of Tickets</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var t in ViewBag.TicketsOfUser)
+        {
+            <tr class="text-light">
+                <th scope="row">@(++i)</th>
+                <td>@t.Trip.Name</td>
+                <td>@t.Quentity</td>
+            </tr>
+        }
+
+     
+    </tbody>
+</table>
+

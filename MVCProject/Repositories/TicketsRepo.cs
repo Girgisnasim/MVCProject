@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using MVCProject.Models;
 
 namespace MVCProject.Repositories
@@ -32,6 +33,12 @@ namespace MVCProject.Repositories
                 context.SaveChanges();
             }
 
+        }
+
+        public List<Ticket> GetTicketsOfUser(int id)
+        {
+           List<Ticket> tickets = context.tickets.Include(t => t.Trip).Where(t => t.CustomerId == id).ToList();
+            return tickets;
         }
 
         public Trip showTicket(int id)
