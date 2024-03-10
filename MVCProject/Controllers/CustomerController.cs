@@ -11,17 +11,11 @@ namespace MVCProject.Controllers
         {
             this.customerRepo = customerRepo;
         }
-
-        //show all booking ticket for this customer
-        public IActionResult BookedTickets() 
-        {  
-            return View(customerRepo.GetAll());
-        }
         
         //get by id =>Details or profile page
         public IActionResult profile(int id)
         {
-            return View();
+            return View(customerRepo.GetById(id));
         }
 
     }
