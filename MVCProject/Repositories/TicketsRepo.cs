@@ -1,4 +1,6 @@
-﻿using MVCProject.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using MVCProject.Models;
 
 namespace MVCProject.Repositories
 {
@@ -11,14 +13,39 @@ namespace MVCProject.Repositories
             this.context = context;
         }
 
-        public List<Trip> GetAllTrips()
+        public void Add(Ticket ticket)
         {
-            throw new NotImplementedException();
+            Trip trip=context.trips.SingleOrDefault(t=>t.Id==ticket.TripId);
+            if (trip!=null)
+            {
+                trip.Available_Seats = trip.Available_Seats - ticket.Quentity;
+                if (trip.Available_Seats == 0)
+                {
+                    trip.Status = "Not Active";
+                }
+                else
+                {
+                    trip.Status = "Active";
+                }
+                context.trips.Update(trip);
+                context.SaveChanges();
+                context.tickets.Add(ticket);
+                context.SaveChanges();
+            }
+
         }
 
-        public int Add(Trip trip)
+        public List<Ticket> GetTicketsOfUser(int id)
         {
-            throw new NotImplementedException();
+           List<Ticket> tickets = context.tickets.Include(t => t.Trip).Where(t => t.CustomerId == id).ToList();
+            return tickets;
         }
+
+        public Trip showTicket(int id)
+        {
+            Trip ticket = context.trips.SingleOrDefault(x => x.Id == id);
+            return ticket;
+        }
+
     }
 }
