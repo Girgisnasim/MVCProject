@@ -3,7 +3,7 @@
 *@
 @{
     Layout = "_Layout";
-    int i=1;
+    // int i=1;
 }
 @model List<Trip>
 <h1> Company Trips </h1>
@@ -14,65 +14,93 @@
         text-align: center;
         margin-top: 100px
     }
-
-    .trips {
-        margin-top: 50px;
-        margin-bottom: 100px;
+    div{
+        display:flex;
     }
-
+   
     p {
         text-align: center;
     }
+    
 </style>
-<div class="trips">
-
-    <table class="table">
-        <thead class="table-dark">
-            <tr>
-                <th scope="col"> Number</th>
-                <th scope="col">Image</th>
-                <th scope="col">Name</th>
-                <th scope="col">Location</th>
-                <th scope="col">Price</th>
-                <th scope="col">Status</th>
-                <th scope="col">Avalabile seats</th>
-                <th scope="col">Total Seats </th>
-                <th scope="col">Arrivale Time</th>
-                <th scope="col">Departure Time</th>
-                <th scope="col">Departure Date</th>
-                <th scope="col">Handels</th>
-               
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <th scope="row">@(i++)</th>
-                    <td><img src="@item.image" style="width:100px;height:100px" alt="image" /></td>
-                    <td>@item.Name</td>
-                    <td>@item.Location</td>
-                    <td>@item.Price</td>
-                    <td>@item.Status</td>
-                    <td>@item.Available_Seats</td>
-                    <td>@item.Total_Seats</td>
-                    <td>@item.Arrival_Time</td>
-                    <td>@item.Departure_Time</td>
-                    <td>@item.Departure_Date</td>
-                    <td>
-
-                        <button onclick="window.location.href='/Admin/update/@item.Id'" class="btn btn-outline-primary"> Upate Trip </button>
-                        <button onclick="window.location.href='/Admin/delete/@item.Id'" class="btn btn-outline-primary"> delete  </button>
-
-
-
-                    </td>
-
-
-                  
-                </tr>
-            }
-        </tbody>
-    </table>
-    <a class="btn btn-outline-primary" href="/Admin/Add">Add New Trip</a>
+<div class="container">
+     @foreach (var item in Model)
+        {
+    <div class="row">
+       
+            <div class="col-md-4">
+                <div class="mb-4">
+                    <div class="d-flex flex-column align-items-center">
+                        <img src="@item.image" style="width:300px;height:300px" alt="image" class="mb-2" />
+                        <h4>@item.Name</h4>
+                        <p>@item.Location</p>
+                        <p>Total Seats: @item.Total_Seats</p>
+                        <p>Arrival Time: @item.Arrival_Time</p>
+                        <p>Departure Time: @item.Departure_Time</p>
+                        <p>Departure Date: @item.Departure_Date</p>
+                    </div>
+                    @* <div class="d-flex justify-content-center">
+                        <button onclick="window.location.href='/Admin/update/@item.Id'" class="btn btn-outline-primary mr-2"> Update Trip </button>
+                        <button onclick="window.location.href='/Admin/delete/@item.Id'" class="btn btn-outline-primary"> Delete </button>
+                    </div> *@
+                    <div class="mt-2">
+                        <p>Price: @item.Price</p>
+                        <p>Available Seats: @item.Available_Seats</p>
+                        <p>Status: @item.Status</p>
+                    </div>
+                </div>
+            </div>
+       
+    </div>
+    }
 </div>
+    <a class="btn btn-outline-primary" href="/Admin/Add">Add New Trip</a>
+  
+@* <table class="table">
+    <thead class="table-dark">
+        <tr>
+            <th scope="col"> Number</th>
+            <th scope="col">Image</th>
+            <th scope="col">Name</th>
+            <th scope="col">Location</th>
+            <th scope="col">Price</th>
+            <th scope="col">Status</th>
+            <th scope="col">Avalabile seats</th>
+            <th scope="col">Total Seats </th>
+            <th scope="col">Arrivale Time</th>
+            <th scope="col">Departure Time</th>
+            <th scope="col">Departure Date</th>
+            <th scope="col">Handels</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th scope="row">@(i++)</th>
+                <td><img src="@item.image" style="width:100px;height:100px" alt="image" /></td>
+                <td>@item.Name</td>
+                <td>@item.Location</td>
+                <td>@item.Price</td>
+                <td>@item.Status</td>
+                <td>@item.Available_Seats</td>
+                <td>@item.Total_Seats</td>
+                <td>@item.Arrival_Time</td>
+                <td>@item.Departure_Time</td>
+                <td>@item.Departure_Date</td>
+                <td>
+
+                    <button onclick="window.location.href='/Admin/update/@item.Id'" class="btn btn-outline-primary"> Upate Trip </button>
+                    <button onclick="window.location.href='/Admin/delete/@item.Id'" class="btn btn-outline-primary"> delete  </button>
+
+
+
+                </td>
+
+
+
+            </tr>
+        }
+    </tbody>
+</table> *@
