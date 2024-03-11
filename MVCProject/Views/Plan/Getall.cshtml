@@ -1,0 +1,44 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "_Layout";
+    int i = 1;
+}
+@model List<Plan>
+<h1 class=" text-center py-2"> Plan About Every Trip </h1>
+<div>
+    <table class="table">
+        <thead class="table-ligth  table-hover">
+            <tr>
+                <th scope="col"> Number</th>
+                <th scope="col">Name</th>
+                @*  <th scope="col">Emploee</th>
+                <th scope="col">Trip</th> *@
+                <th scope="col">PickUp_Points</th>
+                <th scope="col">Handels</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <th scope="row">@(i++)</th>
+                    <td>@item.Name</td>
+                    @* <td>@item.Employee</td>
+                <td>@item.Trip</td> *@
+                    <td>@item.Pickup_Point</td>
+                    <td>
+
+                        <button onclick="window.location.href='/Plan/update/@item.Id'" class="btn btn-primary"> Upate Plan </button>
+                        <button onclick="window.location.href='/Plan/delete/@item.Id'" class="btn btn-primary"> Delete  </button>
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <a class="btn btn-outline-primary" href="/Plan/Add">Add New Plan</a>
+
+</div>

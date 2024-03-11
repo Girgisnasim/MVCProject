@@ -19,6 +19,7 @@ namespace MVCProject
             builder.Services.AddScoped<ICustomerRepo, CustomerRepo>();
             builder.Services.AddScoped<ITicketsRepo, TicketsRepo>();
             builder.Services.AddScoped<ITripsRepo, TripsRepo>();
+            builder.Services.AddScoped<IPlanRepo, PlanRepo>();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
