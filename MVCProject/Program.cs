@@ -1,6 +1,8 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using MVCProject.Models;
 using MVCProject.Repositories;
+using System.Security.Principal;
 
 namespace MVCProject
 {
@@ -15,6 +17,13 @@ namespace MVCProject
 
             builder.Services.AddDbContext<BookContext>(options=>
             options.UseSqlServer(builder.Configuration.GetConnectionString("conn")));
+
+            builder.Services.AddIdentity<ApplicationUser, IdentityRole>(
+            options => options.Password.RequireDigit = true
+               ).
+               AddEntityFrameworkStores<BookContext>();
+
+
 
             builder.Services.AddScoped<ICustomerRepo, CustomerRepo>();
             builder.Services.AddScoped<ITicketsRepo, TicketsRepo>();
