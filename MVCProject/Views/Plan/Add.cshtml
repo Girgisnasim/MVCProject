@@ -5,7 +5,7 @@
    
     
 @{
-    //SelectList list = new SelectList(ViewBag.Trip, "Id", "Name");
+    
     Layout = "_Layout";
 }
 
@@ -16,22 +16,16 @@
         <input asp-for="Name" class="form-control" />
     </div>
 
-
- 
-
     <div class="form-group">
         <label asp-for="Pickup_Point"></label>
         <input asp-for="Pickup_Point" class="form-control" />
     </div>
 
-@* 
-    <div class="mb-3 form-check">
-        <label class="form-check-label" asp-for="TripId">Trip</label>
-        <select asp-for="TripId" class="form-control" asp-items="list">
-       
-        </select>}
-    </div> *@
 
+     <div class="form-group mb-5">
+        <label asp-for="Description"></label>
+        <input asp-for="Description" class="form-control" />
+    </div>
 
     <button type="submit" class="btn btn-primary">Add Plan</button>
 </form>

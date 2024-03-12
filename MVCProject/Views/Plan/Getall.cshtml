@@ -6,39 +6,37 @@
     int i = 1;
 }
 @model List<Plan>
-<h1 class=" text-center py-2"> Plan About Every Trip </h1>
+<h1 class=" text-center mb-5 "> Plan About Every Trip </h1>
 <div>
-    <table class="table">
-        <thead class="table-ligth  table-hover">
+    <table class="table   table-hover">
+        <thead" >
             <tr>
                 <th scope="col"> Number</th>
                 <th scope="col">Name</th>
-                @*  <th scope="col">Emploee</th>
-                <th scope="col">Trip</th> *@
                 <th scope="col">PickUp_Points</th>
+                <th scope="col">Description</th>
                 <th scope="col">Handels</th>
 
             </tr>
         </thead>
-        <tbody>
+        <tbody>  
             @foreach (var item in Model)
             {
                 <tr>
                     <th scope="row">@(i++)</th>
                     <td>@item.Name</td>
-                    @* <td>@item.Employee</td>
-                <td>@item.Trip</td> *@
                     <td>@item.Pickup_Point</td>
+                    <td>@item.Description</td>
                     <td>
 
-                        <button onclick="window.location.href='/Plan/update/@item.Id'" class="btn btn-primary"> Upate Plan </button>
-                        <button onclick="window.location.href='/Plan/delete/@item.Id'" class="btn btn-primary"> Delete  </button>
+                        <button onclick="window.location.href='/Plan/update/@item.Id'" class="btn btn-warning"> Upate Plan </button>
+                        <button onclick="window.location.href='/Plan/delete/@item.Id'" class="btn btn-danger"> Delete  </button>
 
                     </td>
                 </tr>
             }
         </tbody>
     </table>
-    <a class="btn btn-outline-primary" href="/Plan/Add">Add New Plan</a>
+    <a class="btn btn-info m-5" href="/Plan/Add">Add New Plan</a>
 
 </div>

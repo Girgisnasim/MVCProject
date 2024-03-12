@@ -7,6 +7,7 @@ namespace MVCProject.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public string Pickup_Point { get; set; }
+        public string Description { get; set; }
 
         [ForeignKey("Trip")]
         public int? TripId { get; set; }
