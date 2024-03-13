@@ -8,10 +8,11 @@ namespace MVCProject.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public string? image { get; set; }
         public string Location { get; set; }
         public decimal Price { get; set; }
         public string Status { get; set; }
-        public int Seats_Num { get; set; }
+        
         public int Available_Seats { get; set; }
         public int Total_Seats { get; set; }
         public TimeOnly Arrival_Time { get; set; }
