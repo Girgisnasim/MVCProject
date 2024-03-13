@@ -4,6 +4,7 @@ using MVCProject.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MVCProject.Migrations
 {
     [DbContext(typeof(BookContext))]
-    partial class BookContextModelSnapshot : ModelSnapshot
+    [Migration("20240311135930_updateplan")]
+    partial class updateplan
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -84,10 +87,6 @@ namespace MVCProject.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int?>("EmployeeId")
                         .HasColumnType("int");
 
@@ -115,24 +114,16 @@ namespace MVCProject.Migrations
 
             modelBuilder.Entity("MVCProject.Models.Ticket", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
                     b.Property<int?>("CustomerId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Quentity")
                         .HasColumnType("int");
 
                     b.Property<int?>("TripId")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.Property<int>("Quentity")
+                        .HasColumnType("int");
 
-                    b.HasIndex("CustomerId");
+                    b.HasKey("CustomerId", "TripId");
 
                     b.HasIndex("TripId");
 
@@ -173,15 +164,15 @@ namespace MVCProject.Migrations
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
+                    b.Property<int>("Seats_Num")
+                        .HasColumnType("int");
+
                     b.Property<string>("Status")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Total_Seats")
                         .HasColumnType("int");
-
-                    b.Property<string>("image")
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -209,11 +200,15 @@ namespace MVCProject.Migrations
                 {
                     b.HasOne("MVCProject.Models.Customer", "Customer")
                         .WithMany("Ticket")
-                        .HasForeignKey("CustomerId");
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("MVCProject.Models.Trip", "Trip")
                         .WithMany("Ticket")
-                        .HasForeignKey("TripId");
+                        .HasForeignKey("TripId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Customer");
 
