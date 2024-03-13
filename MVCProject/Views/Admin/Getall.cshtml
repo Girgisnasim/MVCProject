@@ -1,106 +1,93 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
-@{
-    Layout = "_Layout";
+ @{
+    Layout = "_Layout1";
     // int i=1;
 }
 @model List<Trip>
-<h1> Company Trips </h1>
-<style>
 
-    h1 {
-        color: black;
-        text-align: center;
-        margin-top: 100px
-    }
-    div{
-        display:flex;
-    }
-   
-    p {
-        text-align: center;
-    }
-    
-</style>
-<div class="container">
-     @foreach (var item in Model)
-        {
+<head>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+</head>
+
+
+<div class="container"style="width:100%">
     <div class="row">
-       
-            <div class="col-md-4">
-                <div class="mb-4">
-                    <div class="d-flex flex-column align-items-center">
-                        <img src="@item.image" style="width:300px;height:300px" alt="image" class="mb-2" />
-                        <h4>@item.Name</h4>
-                        <p>@item.Location</p>
-                        <p>Total Seats: @item.Total_Seats</p>
-                        <p>Arrival Time: @item.Arrival_Time</p>
-                        <p>Departure Time: @item.Departure_Time</p>
-                        <p>Departure Date: @item.Departure_Date</p>
+        @foreach (var item in Model)
+        {
+            <div class="card mb-3" style="max-width:800px; height:200px">
+                <div class="row g-0">
+                    <div class="col-md-6 bg-light">
+                        <img src="@item.image" class="img-fluid rounded-start" alt="..." style="width:400px;height:200px">
                     </div>
-                    @* <div class="d-flex justify-content-center">
-                        <button onclick="window.location.href='/Admin/update/@item.Id'" class="btn btn-outline-primary mr-2"> Update Trip </button>
-                        <button onclick="window.location.href='/Admin/delete/@item.Id'" class="btn btn-outline-primary"> Delete </button>
-                    </div> *@
-                    <div class="mt-2">
-                        <p>Price: @item.Price</p>
-                        <p>Available Seats: @item.Available_Seats</p>
-                        <p>Status: @item.Status</p>
+                    <div class="col-md-6 bg-light">
+                        <div class="card-body" style="width:400px;height:200px">
+                            <h5 class="card-title"><i class="fas fa-map-marker-alt"></i> Trip to: @item.Name</h5>
+                            <p class="card-text"><i class="fas fa-info-circle"></i> @item.Status</p>
+                            <p class="card-text"><i class="fas fa-chair"></i> Available Seats: @item.Available_Seats</p>
+                            <p class="card-text"><small class="text-muted">Hurry up and book the package</small></p>
+                        </div>
                     </div>
                 </div>
             </div>
-       
-    </div>
-    }
-</div>
-    <a class="btn btn-outline-primary" href="/Admin/Add">Add New Trip</a>
-  
-@* <table class="table">
-    <thead class="table-dark">
-        <tr>
-            <th scope="col"> Number</th>
-            <th scope="col">Image</th>
-            <th scope="col">Name</th>
-            <th scope="col">Location</th>
-            <th scope="col">Price</th>
-            <th scope="col">Status</th>
-            <th scope="col">Avalabile seats</th>
-            <th scope="col">Total Seats </th>
-            <th scope="col">Arrivale Time</th>
-            <th scope="col">Departure Time</th>
-            <th scope="col">Departure Date</th>
-            <th scope="col">Handels</th>
+            <div class="card bg-primary text-light" style="width: 18rem;height:200px">
+                <div class="card-body">
+                    <p class="card-title"><i class="far fa-calendar-alt"></i> Date: @item.Departure_Date</p>
+                    <p class="card-title"><i class="fas fa-money-bill"></i> Price: @item.Price</p>
+                    <p class="card-title"><i class="far fa-user"></i> Per Person</p>
 
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <th scope="row">@(i++)</th>
-                <td><img src="@item.image" style="width:100px;height:100px" alt="image" /></td>
-                <td>@item.Name</td>
-                <td>@item.Location</td>
-                <td>@item.Price</td>
-                <td>@item.Status</td>
-                <td>@item.Available_Seats</td>
-                <td>@item.Total_Seats</td>
-                <td>@item.Arrival_Time</td>
-                <td>@item.Departure_Time</td>
-                <td>@item.Departure_Date</td>
-                <td>
-
-                    <button onclick="window.location.href='/Admin/update/@item.Id'" class="btn btn-outline-primary"> Upate Trip </button>
-                    <button onclick="window.location.href='/Admin/delete/@item.Id'" class="btn btn-outline-primary"> delete  </button>
-
-
-
-                </td>
-
-
-
-            </tr>
+                    <button onclick="window.location.href='/Admin/update/@item.Id'" class="btn btn-outline-light"> <i class="fas fa-edit"></i> Update Trip </button>
+                    <button onclick="window.location.href='/Admin/delete/@item.Id'" class="btn btn-outline-light"> <i class="fas fa-trash-alt"></i> Delete </button>
+                </div>
+            </div>
         }
-    </tbody>
-</table> *@
+    </div>
+    <button onclick="window.location.href='/Admin/Add'" class="btn btn-outline-primary"> Add Trip </button>
+</div>
+
+@* @section pakeges {
+
+    <div class="container" style="width:100%">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="card mb-3" style="max-width:800px; height:200px">
+                    <div class="row g-0">
+                        <div class="col-md-6 bg-light">
+                            <img src="@item.image" class="img-fluid rounded-start" alt="..." style="width:400px;height:200px">
+                        </div>
+                        <div class="col-md-6 bg-light">
+                            <div class="card-body" style="width:400px;height:200px">
+                                <h5 class="card-title"><i class="fas fa-map-marker-alt"></i> Trip to: @item.Name</h5>
+                                <p class="card-text"><i class="fas fa-info-circle"></i> @item.Status</p>
+                                <p class="card-text"><i class="fas fa-chair"></i> Available Seats: @item.Available_Seats</p>
+                                <p class="card-text"><small class="text-muted">Hurry up and book the package</small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card bg-primary text-light" style="width: 18rem;height:200px">
+                    <div class="card-body">
+                        <p class="card-title"><i class="far fa-calendar-alt"></i> Date: @item.Departure_Date</p>
+                        <p class="card-title"><i class="fas fa-money-bill"></i> Price: @item.Price</p>
+                        <p class="card-title"><i class="far fa-user"></i> Per Person</p>
+
+                        
+                    </div>
+                </div>
+            }
+        </div>
+
+    </div>
+ *@
+}
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
