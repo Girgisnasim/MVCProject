@@ -7,18 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tourly - Travel agancy</title>
 
-    <!--
-      - favicon
-    -->
-    <!-- <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml"> -->
-    <!--
-      - custom css link
-    -->
+   
     <link rel="stylesheet" href="/css/style.css">
 
-    <!--
-      - google font link
-    -->
+   
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap"
@@ -116,9 +108,7 @@
                             <a href="#home" class="navbar-link" data-nav-link>home</a>
                         </li>
 
-                        <li>
-                            <a href="#" class="navbar-link" data-nav-link>about us</a>
-                        </li>
+                        
 
                         <li>
                             <a href="#destination" class="navbar-link" data-nav-link>destination</a>
@@ -132,17 +122,51 @@
                             <a href="#gallery" class="navbar-link" data-nav-link>gallery</a>
                         </li>
 
-                        <li>
-                            <a href="#contact" class="navbar-link" data-nav-link>contact us</a>
-                        </li>
+
+                       
                         <li>
                             <a href="/Admin/Getall" class="navbar-link" data-nav-link>Trips</a>
                         </li>
-                    </ul>
+                        @if (User.IsInRole("Admin")){
+                        <li class="nav-item ">
+                            <a class="nav-link text-white" asp-controller="Account" asp-action="AddAdmin">Add Admin</a>
+                        </li>
+                       
+                        <li class="nav-item ">
+                            <a class="nav-link text-white" asp-controller="Roles" asp-action="New">Add Role</a>
+                        </li>
+           
+                        }
+                            @if (User.Identity.IsAuthenticated == false)
+                            {
+                                
+                                <div>
+                            <li class="nav-item ">
+                                <a class="nav-link text-white" asp-controller="Account" asp-action="Register">Register</a>
+                                </li>
+                                </div>
+                                <div>
+                                <li class="nav-item ">
+                                <button class="btn btn-primary"> <a class="nav-link text-dark" asp-controller="Account" asp-action="Login">Login</a></button>
+                                   
+                                </li>
+                                </div>
+                            }
+                            else
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-controller="Account" asp-action="Logout">Welcome @User.Identity.Name</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-controller="Account" asp-action="Logout">Logout</a>
+                                </li>
+                            }
+                        </ul>
+                   
 
                 </nav>
 
-                <button class="btn btn-primary">Book Now</button>
+               @*  <button class="btn btn-primary">Book Now</button> *@
 
             </div>
         </div>
@@ -586,7 +610,8 @@
     -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-
+    @await RenderSectionAsync("Scripts", required: false)
+    @RenderSection("Station", required: false)
 </body>
 
 </html>
