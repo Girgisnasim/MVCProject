@@ -4,6 +4,7 @@ namespace MVCProject.Models
 {
     public class Ticket
     {
+        public int Id { get; set; } 
         [ForeignKey("Customer")]
         public int? CustomerId { get; set; }
 

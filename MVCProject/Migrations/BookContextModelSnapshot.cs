@@ -153,14 +153,20 @@ namespace MVCProject.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int?>("EmployeeId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Name")
-                        .HasColumnType("int");
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Pickup_Point")
-                        .HasColumnType("int");
+                    b.Property<string>("Pickup_Point")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("TripId")
                         .HasColumnType("int");
@@ -178,16 +184,24 @@ namespace MVCProject.Migrations
 
             modelBuilder.Entity("MVCProject.Models.Ticket", b =>
                 {
-                    b.Property<int?>("CustomerId")
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int?>("TripId")
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int?>("CustomerId")
                         .HasColumnType("int");
 
                     b.Property<int>("Quentity")
                         .HasColumnType("int");
 
-                    b.HasKey("CustomerId", "TripId");
+                    b.Property<int?>("TripId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CustomerId");
 
                     b.HasIndex("TripId");
 
@@ -397,15 +411,11 @@ namespace MVCProject.Migrations
                 {
                     b.HasOne("MVCProject.Models.Customer", "Customer")
                         .WithMany("Ticket")
-                        .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CustomerId");
 
                     b.HasOne("MVCProject.Models.Trip", "Trip")
                         .WithMany("Ticket")
-                        .HasForeignKey("TripId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("TripId");
 
                     b.Navigation("Customer");
 
