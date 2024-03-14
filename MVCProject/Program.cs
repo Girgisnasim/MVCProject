@@ -1,6 +1,8 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using MVCProject.Models;
 using MVCProject.Repositories;
+using System.Security.Principal;
 
 namespace MVCProject
 {
@@ -18,6 +20,11 @@ namespace MVCProject
 
             builder.Services.AddScoped<ICustomerRepo, CustomerRepo>();
             builder.Services.AddScoped<ITicketsRepo, TicketsRepo>();
+            //register usermanager,rolemanager==>userrole
+            builder.Services.AddIdentity<ApplicationUser, IdentityRole>(
+            options => options.Password.RequireDigit = true
+                ).
+                AddEntityFrameworkStores<BookContext>();
 
             builder.Services.AddScoped<IAdminRepo, AdminRepo>();
 
@@ -33,6 +40,7 @@ namespace MVCProject
             app.UseStaticFiles();
 
             app.UseRouting();
+            app.UseAuthentication();//requet
 
             app.UseAuthorization();
 

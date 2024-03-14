@@ -93,7 +93,10 @@
 
 li { list-style: none; }
 
-a { text-decoration: none; }
+a {
+    text-decoration: none;
+    color: white;
+}
 
 a,
 img,

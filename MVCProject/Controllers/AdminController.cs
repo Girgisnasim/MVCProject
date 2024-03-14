@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using MVCProject.Models;
 using MVCProject.Repositories;
 
 namespace MVCProject.Controllers
 {
+    [Authorize]
     public class AdminController : Controller
     {
        private IAdminRepo AdminRepo;
