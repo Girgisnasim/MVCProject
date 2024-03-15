@@ -45,11 +45,11 @@ namespace MVCProject.Controllers
             var fileName = Path.GetFileName(image.FileName);
             var filePath = Path.Combine(uploadsFolder, fileName);
 
-            if (System.IO.File.Exists(filePath))
-            {
-                ModelState.AddModelError("image", "A file with the same name already exists.");
-                return RedirectToAction("Error");
-            }
+            //if (System.IO.File.Exists(filePath))
+            //{
+            //    ModelState.AddModelError("image", "A file with the same name already exists.");
+            //    return RedirectToAction("Error");
+            //}
 
             using (var fileStream = new FileStream(filePath, FileMode.Create))
             {

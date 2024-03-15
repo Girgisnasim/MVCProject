@@ -76,7 +76,7 @@ namespace MVCProject.Controllers
                 ApplicationUser userModel = await userManager.FindByNameAsync(UserVm.UserName);
                 if (userModel != null)
                 {
-                    bool found = await userManager.CheckPasswordAsync(userModel, UserVm.PAssword);
+                    bool found = await userManager.CheckPasswordAsync(userModel, UserVm.Password);
                     if (found)
                     {
                         //    await signInMAnager.SignInAsync(userModel, UserVm.RememberMe);
@@ -84,7 +84,7 @@ namespace MVCProject.Controllers
                         Claims.Add(new Claim("Address", userModel.Address));
                         await signInMAnager.SignInWithClaimsAsync
                             (userModel, UserVm.RememberMe, Claims);
-                        return RedirectToAction("Getall", "Admin");
+                        return RedirectToAction("Stations", "Trip");
                     }
                 }
                 ModelState.AddModelError("", "Username and password invalid");
@@ -115,7 +115,7 @@ namespace MVCProject.Controllers
                 {
                     //creat cookie
                     await signInMAnager.SignInAsync(userModel, false);
-                    return RedirectToAction("Getall", "Admin");
+                    return RedirectToAction("Stations", "Trip");
                 }
                 else
                 {

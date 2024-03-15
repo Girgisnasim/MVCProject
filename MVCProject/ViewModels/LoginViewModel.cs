@@ -9,7 +9,7 @@ namespace MVCProject.ViewModels
         public string UserName { get; set; }
         [Required]
         [DataType(DataType.Password)]
-        public string PAssword { get; set; }
+        public string Password { get; set; }
 
         public bool RememberMe { get; set; }
     }

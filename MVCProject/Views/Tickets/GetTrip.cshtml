@@ -1,36 +1,39 @@
-﻿@model Trip
+﻿@{
+    Layout = "_Layout";
+}
+@model Trip
 
 <div class="container">
     <div class="row">
-        <div class="col m-2 d-flex justify-content-center align-items-center">
-
-            <div class="card" style="width: 18rem;">
-                <img src="~/assets/images/04.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">@Model.Name</h5>
-                    <p class="card-text"><strong>Location:</strong> @Model.Location</p>
-                    <p class="card-text"><strong>Status:</strong> <span id="Status">@Model.Status</span></p>
-
-                 
-
-                    <p class="card-text"><strong>Total Seats:</strong> @Model.Total_Seats</p>
-
-                    <p class="card-text">
-                        <strong>Available Seats:</strong>
-                        <span id="Stock" data-value="@Model.Available_Seats">@Model.Available_Seats</span>
-                    </p>
-                    <p class="card-text"><strong>Price:</strong> $@Model.Price</p>
-                    <p class="card-text"><strong>Arrival Time:</strong> @Model.Arrival_Time</p>
-                    <p class="card-text"><strong>Departure Date:</strong> @Model.Departure_Date</p>
+        <div class="card mb-3" style="max-width:800px; height:200px">
+            <div class="row g-0">
+                <div class="col-md-6 bg-light">
+                    <img src="~/images/@Model.image" class="img-fluid rounded-start" alt="..." style="width:400px;height:200px">
+                </div>
+                <div class="col-md-6 bg-light">
+                    <div class="card-body" style="width:400px;height:200px">
+                        <h5 class="card-title"><i class="fas fa-map-marker-alt"></i> Trip to: @Model.Name</h5>
+                        <p class="card-text"><i class="fas fa-info-circle"></i><p id="Status"> @Model.Status</p> </p>
+                        <p class="card-text"><i class="fas fa-chair"></i> Available Seats: @Model.Available_Seats</p>
+                        <p class="card-text"><small class="text-muted">Hurry up and book the package</small></p>
+                    </div>
                 </div>
             </div>
+        </div>
+        <div class="card bg-primary text-light" style="width: 18rem;height:200px">
+            <div class="card-body">
+                <p class="card-title"><i class="far fa-calendar-alt"></i> Date: @Model.Departure_Date</p>
+                <p class="card-title"><i class="fas fa-money-bill"></i> Price: @Model.Price</p>
+                <p class="card-title"><i class="far fa-user"></i> Per Person</p>
 
+               
+            </div>
         </div>
     </div>
 
     <form asp-action="AddTicket" asp-controller="Tickets" method="post">
         <input hidden value="@Model.Id" name="TripId" />
-        <input hidden value="5" name="CustomerId" />
+        <input hidden value="1" name="CustomerId" />
         <input hidden id="HiddenStock" name="HiddenStock" />
 
         <div class="mb-3">

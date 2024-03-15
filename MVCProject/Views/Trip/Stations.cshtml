@@ -2,18 +2,45 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
-
+    Layout = "_Layout";
 }
 @model SelectList
+<h5>Select The City  </h5>
 <select class="form-select"  asp-items="@Model" onchange="GetStation(this.value)">
  
 
 </select>
+<br />
+<br />
 <div class="container">
     <div id="Station" class="row justify-content-center">
         @foreach (var t in ViewBag.AllTrips)
         {
-            <div class="col-lg-3 col-md-6 col-sm-12 m-2">
+            <div class="card mb-3" style="max-width:800px; height:200px">
+                <div class="row g-0">
+                    <div class="col-md-6 bg-light">
+                        <img src="~/images/@t.image" class="img-fluid rounded-start" alt="..." style="width:400px;height:200px">
+                    </div>
+                    <div class="col-md-6 bg-light">
+                        <div class="card-body" style="width:400px;height:200px">
+                            <h5 class="card-title"><i class="fas fa-map-marker-alt"></i> Trip to: @t.Name</h5>
+                            <p class="card-text"><i class="fas fa-info-circle"></i> @t.Status</p>
+                            <p class="card-text"><i class="fas fa-chair"></i> Available Seats: @t.Available_Seats</p>
+                            <p class="card-text"><small class="text-muted">Hurry up and book the package</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card bg-primary text-light" style="width: 18rem;height:200px">
+                <div class="card-body">
+                    <p class="card-title"><i class="far fa-calendar-alt"></i> Date: @t.Departure_Date</p>
+                    <p class="card-title"><i class="fas fa-money-bill"></i> Price: @t.Price</p>
+                    <p class="card-title"><i class="far fa-user"></i> Per Person</p>
+
+                    <a class="btn btn-outline-light" href="~/Tickets/GetTrip/@t.Id">Book Now!</a>
+                </div>
+            </div>
+           @*  <div class="col-lg-3 col-md-6 col-sm-12 m-2">
                 <div class="card" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
                     <img src="~/images/@t.image" class="card-img-top" style="height: 200px; object-fit: cover;" alt="Trip Image">
                     <div class="card-body">
@@ -28,7 +55,7 @@
                         <a class="btn btn-success" href="~/Tickets/GetTrip/@t.Id">Book Now!</a>
                     </div>
                 </div>
-            </div>
+            </div> *@
         }
     </div>
 </div>
