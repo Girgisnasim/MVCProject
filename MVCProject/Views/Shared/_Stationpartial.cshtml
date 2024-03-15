@@ -6,30 +6,28 @@
 
 @foreach(var t in Model)
 {
-    <div class="col m-2 d-flex justify-content-center align-items-center">
-        <div class="card mb-3" style="max-width: 540px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
-            <div class="row g-0">
-                <div class="col-md-4">
-                    <img src="~/assets/images/04.jpg" class="img-fluid rounded-start" style="height: 200px; width: 100%; object-fit: cover;" alt="Trip Image">
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title">@t.Name</h5>
-                        <p class="card-text"><strong>Location:</strong> @t.Location</p>
-                        <p class="card-text"><strong>Status:</strong> @t.Status</p>
-
-                        
-
-                        <p class="card-text"><strong>Total Seats:</strong> @t.Total_Seats</p>
-
-                        <p class="card-text"><strong>Available Seats:</strong> @t.Available_Seats</p>
-                        <p class="card-text"><strong>Price:</strong> $@t.Price</p>
-                        <p class="card-text"><strong>Arrival Time:</strong> @t.Arrival_Time</p>
-                        <p class="card-text"><strong>Departure Date:</strong> @t.Departure_Date</p>
-                        <a class="btn btn-success" href="~/Tickets/GetTrip/@t.Id">Book Now!</a>
-                    </div>
+    <div class="card mb-3" style="max-width:800px; height:200px">
+        <div class="row g-0">
+            <div class="col-md-6 bg-light">
+                <img src="~/images/@t.image" class="img-fluid rounded-start" alt="..." style="width:400px;height:200px">
+            </div>
+            <div class="col-md-6 bg-light">
+                <div class="card-body" style="width:400px;height:200px">
+                    <h5 class="card-title"><i class="fas fa-map-marker-alt"></i> Trip to: @t.Name</h5>
+                    <p class="card-text"><i class="fas fa-info-circle"></i> @t.Status</p>
+                    <p class="card-text"><i class="fas fa-chair"></i> Available Seats: @t.Available_Seats</p>
+                    <p class="card-text"><small class="text-muted">Hurry up and book the package</small></p>
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="card bg-primary text-light" style="width: 18rem;height:200px">
+        <div class="card-body">
+            <p class="card-title"><i class="far fa-calendar-alt"></i> Date: @t.Departure_Date</p>
+            <p class="card-title"><i class="fas fa-money-bill"></i> Price: @t.Price</p>
+            <p class="card-title"><i class="far fa-user"></i> Per Person</p>
+
+            <a class="btn btn-outline-light" href="~/Tickets/GetTrip/@t.Id">Book Now!</a>
         </div>
     </div>
 

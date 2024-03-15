@@ -34,7 +34,7 @@ function Add() {
 
     // Update status based on remaining stock
     if (newStockValue == 0) {
-        Status.textContent = "Not Active";
+        Status.textContent = "not avalable";
     }
     console.log("Remaining stock: " + newStockValue);
     
@@ -44,7 +44,7 @@ window.onload =function() {
     var statusValue = document.getElementById("Status").innerText;
     var btn = document.getElementById("FormBtn");
 
-    if (statusValue === "Not Active") {
+    if (statusValue === "not avalable") {
         btn.disabled = true;
     } else {
         btn.disabled = false;

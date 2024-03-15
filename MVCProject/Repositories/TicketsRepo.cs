@@ -21,11 +21,11 @@ namespace MVCProject.Repositories
                 trip.Available_Seats = trip.Available_Seats - ticket.Quentity;
                 if (trip.Available_Seats == 0)
                 {
-                    trip.Status = "Not Active";
+                    trip.Status = "not avalable";
                 }
                 else
                 {
-                    trip.Status = "Active";
+                    trip.Status = "avalable";
                 }
                 context.trips.Update(trip);
                 context.SaveChanges();

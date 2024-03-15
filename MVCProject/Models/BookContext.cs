@@ -20,7 +20,7 @@ namespace MVCProject.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Ticket>().HasKey("CustomerId", "TripId");
+            //modelBuilder.Entity<Ticket>().HasKey("CustomerId", "TripId");
             base.OnModelCreating(modelBuilder);
         }
        
