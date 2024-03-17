@@ -9,7 +9,7 @@ using MVCProject.Repositories;
 
 namespace MVCProject.Controllers
 {
-    [Authorize]
+    
     public class AdminController : Controller
     {
        private IAdminRepo AdminRepo;
@@ -19,14 +19,18 @@ namespace MVCProject.Controllers
             AdminRepo =_adminRepo;
             _webHostEnvironment = webHostEnvironment;
         }
+       
         public IActionResult Getall()
         {
             List<Trip> trips=AdminRepo.Getall();
             return View(trips);
         }
+        //[Authorize(Roles = "Admin")]
+        [HttpGet]
         public IActionResult Add() {
          return View();
         }
+        //[Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> AddAsync(Trip trip, IFormFile image)
         {
@@ -61,7 +65,7 @@ namespace MVCProject.Controllers
             AdminRepo.Add(trip);
             return RedirectToAction("Getall");
         }
-
+        //[Authorize(Roles = "Admin")]
         public ActionResult update(int id)
         {
 
@@ -73,6 +77,7 @@ namespace MVCProject.Controllers
             return View(trip);
 
         }
+        //[Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult update(Trip trip) {
 
@@ -80,6 +85,7 @@ namespace MVCProject.Controllers
             return RedirectToAction("Getall");
 
         }
+        //[Authorize(Roles = "Admin")]
         public ActionResult delete(int id)
         {
             AdminRepo.Delete(id);

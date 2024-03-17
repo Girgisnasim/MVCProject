@@ -103,7 +103,7 @@
 
                     </div>
 
-                    <ul class="navbar-list">
+                     <ul class="navbar-list">
 
                         <li>
                             <a href="#home" class="navbar-link" data-nav-link>home</a>
@@ -138,32 +138,33 @@
                         </li>
            
                         }
-                            @if (User.Identity.IsAuthenticated == false)
+                        @if (User.Identity.IsAuthenticated == false)
                             {
                                 
-                               @*  <div>
+                            <div>
                             <li class="nav-item ">
                                 <a class="nav-link text-white" asp-controller="Account" asp-action="Register">Register</a>
-                                </li>
-                                </div> *@
-                                <div>
+                            </li>
+                             
+                             </div>
+                            <div>
                                 <li class="nav-item ">
                                 <a class="nav-link text-light btn btn-primary" asp-controller="Account" asp-action="Login">Login</a>
                               @*   <button class=" nav-link btn btn-primary text-light" asp-controller="Account" asp-action="Login">Login</button> *@
                                    
                                 </li>
-                                </div>
-                            }
-                            else
+                            </div>
+                        }
+                        else
                             {
                                 <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-controller="Account" asp-action="Logout">Welcome @User.Identity.Name</a>
+                                    <a class="nav-link text-light" asp-controller="Account" asp-action="Logout">Welcome @User.Identity.Name</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-controller="Account" asp-action="Logout">Logout</a>
+                                    <a class="nav-link text-light" asp-controller="Account" asp-action="Logout">Logout</a>
                                 </li>
-                            }
-                        </ul>
+                        }
+                     </ul>
                    
 
                 </nav>

@@ -3,48 +3,52 @@
 *@
 @{
     Layout = "_Layout";
+    // bool isAdmin = User.IsInRole("Admin");
 }
 @model Trip
-<form asp-action="Add" asp-controller="Admin" enctype="multipart/form-data" method="post">
-    <div class="form-group">
-        <label asp-for="Name"></label>
-        <input asp-for="Name" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label asp-for="Location"></label>
-        <input asp-for="Location" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label asp-for="Price"></label>
-        <input asp-for="Price" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label asp-for="Status"></label>
-        <input asp-for="Status" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label asp-for="Arrival_Time"></label>
-        <input asp-for="Arrival_Time" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label asp-for="Departure_Time"></label>
-        <input asp-for="Departure_Time" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label asp-for="Departure_Date"></label>
-        <input asp-for="Departure_Date" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label asp-for="Available_Seats"></label>
-        <input asp-for="Available_Seats" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label asp-for="Total_Seats"></label>
-        <input asp-for="Total_Seats" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label asp-for="image"></label>
-        <input asp-for="image" type="file" name="image" class="form-control" />
-    </div>
-    <button type="submit" class="btn btn-primary">Add Trip</button>
-</form>
+@*    @if (isAdmin)
+{ *@
+    <form asp-action="Add" asp-controller="Admin" enctype="multipart/form-data" method="post">
+        <div class="form-group">
+            <label asp-for="Name"></label>
+            <input asp-for="Name" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Location"></label>
+            <input asp-for="Location" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Price"></label>
+            <input asp-for="Price" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Status"></label>
+            <input asp-for="Status" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Arrival_Time"></label>
+            <input asp-for="Arrival_Time" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Departure_Time"></label>
+            <input asp-for="Departure_Time" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Departure_Date"></label>
+            <input asp-for="Departure_Date" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Available_Seats"></label>
+            <input asp-for="Available_Seats" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Total_Seats"></label>
+            <input asp-for="Total_Seats" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="image"></label>
+            <input asp-for="image" type="file" name="image" class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-primary">Add Trip</button>
+    </form>
+@* } *@

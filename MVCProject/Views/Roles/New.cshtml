@@ -4,11 +4,20 @@
     Layout = "_Layout";
     ViewData["Title"] = "New";
 }
+<style>
+    h1{
+        text-align:center;
+        margin-right:70px;
+        margin-top:60px;
+    }
+    .row{
+        margin-left:500px;
+    }
+</style>
 
-<h1>New</h1>
+<h1>New Role</h1>
 
-<h4>RoleViewModel</h4>
-<hr />
+
 <div class="row">
     <div class="col-md-4">
         <form asp-action="New">
@@ -18,16 +27,17 @@
                 <input asp-for="RoleName" class="form-control" />
                 <span asp-validation-for="RoleName" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
+                <a asp-action="Index">Back</a>
+
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
