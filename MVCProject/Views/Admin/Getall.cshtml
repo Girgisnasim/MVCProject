@@ -3,6 +3,7 @@
 *@
  @{
     Layout = "_Layout1";
+    bool isAdmin = User.IsInRole("Admin");
     // int i=1;
 }
 @model List<Trip>
@@ -37,14 +38,19 @@
                     <p class="card-title"><i class="far fa-calendar-alt"></i> Date: @item.Departure_Date</p>
                     <p class="card-title"><i class="fas fa-money-bill"></i> Price: @item.Price</p>
                     <p class="card-title"><i class="far fa-user"></i> Per Person</p>
-
+                   @*  @if (isAdmin)
+                    { *@
                     <button onclick="window.location.href='/Admin/update/@item.Id'" class="btn btn-outline-light"> <i class="fas fa-edit"></i> Update Trip </button>
                     <button onclick="window.location.href='/Admin/delete/@item.Id'" class="btn btn-outline-light"> <i class="fas fa-trash-alt"></i> Delete </button>
+               @*     } *@
                 </div>
             </div>
         }
     </div>
+@*     @if (isAdmin)
+ { *@
     <button onclick="window.location.href='/Admin/Add'" class="btn btn-outline-primary"> Add Trip </button>
+ @* } *@
 </div>
 
 @* @section pakeges {
