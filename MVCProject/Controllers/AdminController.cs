@@ -2,14 +2,14 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 
 ﻿using Microsoft.AspNetCore.Authorization;
-
+using MVCProject.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using MVCProject.Models;
 using MVCProject.Repositories;
 
 namespace MVCProject.Controllers
 {
-    
+    [Authorize]
     public class AdminController : Controller
     {
        private IAdminRepo AdminRepo;
@@ -25,15 +25,24 @@ namespace MVCProject.Controllers
             List<Trip> trips=AdminRepo.Getall();
             return View(trips);
         }
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public IActionResult Add() {
          return View();
         }
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         [HttpPost]
-        public async Task<IActionResult> AddAsync(Trip trip, IFormFile image)
+
+        public async Task<IActionResult> AddAsync(TripVM tripVM, IFormFile image)
         {
+            if (!ModelState.IsValid)
+            {
+                // If model validation fails, return to the view with errors
+                return View(tripVM);
+            }
+
+            //Check if image is provided and its length is greater than 0
+
             if (image == null || image.Length == 0)
             {
                 ModelState.AddModelError("image", "Please select a file to upload.");
@@ -49,23 +58,34 @@ namespace MVCProject.Controllers
             var fileName = Path.GetFileName(image.FileName);
             var filePath = Path.Combine(uploadsFolder, fileName);
 
-            //if (System.IO.File.Exists(filePath))
-            //{
-            //    ModelState.AddModelError("image", "A file with the same name already exists.");
-            //    return RedirectToAction("Error");
-            //}
-
             using (var fileStream = new FileStream(filePath, FileMode.Create))
             {
                 await image.CopyToAsync(fileStream);
             }
 
-            trip.image =image.FileName;
-
+            tripVM.image = image.FileName;
+            Trip trip= new Trip()
+            {
+                Name = tripVM.Name,
+                Location = tripVM.Location,
+                Price = tripVM.Price,
+                Status = tripVM.Status,
+                Available_Seats = tripVM.Available_Seats,
+                Total_Seats = tripVM.Total_Seats,
+                Arrival_Time = tripVM.Arrival_Time,
+                Departure_Time = tripVM.Departure_Time,
+                Departure_Date = tripVM.Departure_Date,
+                image = tripVM.image
+            };
             AdminRepo.Add(trip);
+
             return RedirectToAction("Getall");
         }
-        //[Authorize(Roles = "Admin")]
+
+
+
+
+        [Authorize(Roles = "Admin")]
         public ActionResult update(int id)
         {
 
@@ -77,7 +97,7 @@ namespace MVCProject.Controllers
             return View(trip);
 
         }
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult update(Trip trip) {
 
@@ -85,7 +105,7 @@ namespace MVCProject.Controllers
             return RedirectToAction("Getall");
 
         }
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public ActionResult delete(int id)
         {
             AdminRepo.Delete(id);

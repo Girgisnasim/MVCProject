@@ -1,54 +1,73 @@
-﻿@*
+﻿
+@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
     Layout = "_Layout";
-    // bool isAdmin = User.IsInRole("Admin");
+    bool isAdmin = User.IsInRole("Admin");
 }
-@model Trip
-@*    @if (isAdmin)
-{ *@
+@model TripVM
+@if (isAdmin)
+
+{
+
+    <button onclick="window.location.href='/Admin/Getall'" class="btn btn-outline-primary"> Back To Trips</button>
     <form asp-action="Add" asp-controller="Admin" enctype="multipart/form-data" method="post">
-        <div class="form-group">
+        <div class="form-row">
+        <div class="form-group col-md-6">
             <label asp-for="Name"></label>
             <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
         </div>
-        <div class="form-group">
+        <div class="form-group col-md-6">
             <label asp-for="Location"></label>
             <input asp-for="Location" class="form-control" />
+            <span asp-validation-for="Location" class="text-danger"></span>
         </div>
-        <div class="form-group">
+        <div class="form-group col-md-6">
             <label asp-for="Price"></label>
             <input asp-for="Price" class="form-control" />
+            <span asp-validation-for="Price" class="text-danger"></span>
         </div>
-        <div class="form-group">
+        <div class="form-group col-md-6">
             <label asp-for="Status"></label>
             <input asp-for="Status" class="form-control" />
+            <span asp-validation-for="Status" class="text-danger"></span>
         </div>
-        <div class="form-group">
+        <div class="form-group col-md-6">
             <label asp-for="Arrival_Time"></label>
             <input asp-for="Arrival_Time" class="form-control" />
+            <span asp-validation-for="Arrival_Time" class="text-danger"></span>
         </div>
-        <div class="form-group">
+        <div class="form-group col-md-6">
             <label asp-for="Departure_Time"></label>
             <input asp-for="Departure_Time" class="form-control" />
+            <span asp-validation-for="Departure_Time" class="text-danger"></span>
         </div>
-        <div class="form-group">
+        <div class="form-group col-md-6">
             <label asp-for="Departure_Date"></label>
             <input asp-for="Departure_Date" class="form-control" />
+            <span asp-validation-for="Departure_Date" class="text-danger"></span>
         </div>
-        <div class="form-group">
+        <div class="form-group col-md-6">
             <label asp-for="Available_Seats"></label>
             <input asp-for="Available_Seats" class="form-control" />
+            <span asp-validation-for="Available_Seats" class="text-danger"></span>
         </div>
-        <div class="form-group">
+        <div class="form-group col-md-6">
             <label asp-for="Total_Seats"></label>
             <input asp-for="Total_Seats" class="form-control" />
+            <span asp-validation-for="Total_Seats" class="text-danger"></span>
         </div>
-        <div class="form-group">
+        <div class="form-group col-md-6">
             <label asp-for="image"></label>
             <input asp-for="image" type="file" name="image" class="form-control" />
+            <span asp-validation-for="image" class="text-danger"></span>
         </div>
-        <button type="submit" class="btn btn-primary">Add Trip</button>
+        </div>
+        <br />
+        <button type="submit" class="btn btn-outline-primary">Add Trip</button>
+       
     </form>
-@* } *@
+    <br />
+}
