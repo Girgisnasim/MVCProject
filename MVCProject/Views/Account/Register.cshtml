@@ -1,0 +1,75 @@
+﻿@model MVCProject.ViewModels.RegisterUserViewModel
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Register";
+}
+
+
+
+<style>
+    h1 {
+        text-align: center;
+        margin-right: 20px;
+        color: black;
+    }
+
+    .row {
+        margin-left: 500px;
+        width: 350px;
+        height: 500px;
+        border: solid 1px;
+        background-image: url('https://wallpapercave.com/wp/wp9764032.png');
+        /*   background-color:lightskyblue; */
+        /*      background-image: url('assets/images/0002.jpg'); */
+    }
+</style>
+<h1>Welcome to Booking website</h1>
+<br />
+<br />
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Register">
+         
+            <h1>Register</h1>
+            <br />
+            <div class="form-group">
+                <label asp-for="UserName" class="control-label"></label>
+                <input asp-for="UserName" class="form-control" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <label asp-for="ConfirmPassword" class="control-label"></label>
+                <input asp-for="ConfirmPassword" class="form-control" />
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <label asp-for="Address" class="control-label"></label>
+                <input asp-for="Address" class="form-control" />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Rerister" class="btn btn-outline-primary" />
+                <a asp-action="Login"> Login</a>
+            </div>
+        </form>
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    </div>
+</div>
+
+<div>
+  
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
