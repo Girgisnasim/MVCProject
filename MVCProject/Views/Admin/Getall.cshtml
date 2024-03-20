@@ -38,56 +38,22 @@
                     <p class="card-title"><i class="far fa-calendar-alt"></i> Date: @item.Departure_Date</p>
                     <p class="card-title"><i class="fas fa-money-bill"></i> Price: @item.Price</p>
                     <p class="card-title"><i class="far fa-user"></i> Per Person</p>
-                   @*  @if (isAdmin)
-                    { *@
+                    @if (isAdmin)
+                    {
                     <button onclick="window.location.href='/Admin/update/@item.Id'" class="btn btn-outline-light"> <i class="fas fa-edit"></i> Update Trip </button>
                     <button onclick="window.location.href='/Admin/delete/@item.Id'" class="btn btn-outline-light"> <i class="fas fa-trash-alt"></i> Delete </button>
-               @*     } *@
+                   }
                 </div>
             </div>
         }
     </div>
-@*     @if (isAdmin)
- { *@
+    @if (isAdmin)
+ {
     <button onclick="window.location.href='/Admin/Add'" class="btn btn-outline-primary"> Add Trip </button>
- @* } *@
+    <button onclick="window.location.href='http://localhost:5199/'" class="btn btn-outline-primary"> Back </button>
+ }
 </div>
 
-@* @section pakeges {
-
-    <div class="container" style="width:100%">
-        <div class="row">
-            @foreach (var item in Model)
-            {
-                <div class="card mb-3" style="max-width:800px; height:200px">
-                    <div class="row g-0">
-                        <div class="col-md-6 bg-light">
-                            <img src="@item.image" class="img-fluid rounded-start" alt="..." style="width:400px;height:200px">
-                        </div>
-                        <div class="col-md-6 bg-light">
-                            <div class="card-body" style="width:400px;height:200px">
-                                <h5 class="card-title"><i class="fas fa-map-marker-alt"></i> Trip to: @item.Name</h5>
-                                <p class="card-text"><i class="fas fa-info-circle"></i> @item.Status</p>
-                                <p class="card-text"><i class="fas fa-chair"></i> Available Seats: @item.Available_Seats</p>
-                                <p class="card-text"><small class="text-muted">Hurry up and book the package</small></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card bg-primary text-light" style="width: 18rem;height:200px">
-                    <div class="card-body">
-                        <p class="card-title"><i class="far fa-calendar-alt"></i> Date: @item.Departure_Date</p>
-                        <p class="card-title"><i class="fas fa-money-bill"></i> Price: @item.Price</p>
-                        <p class="card-title"><i class="far fa-user"></i> Per Person</p>
-
-                        
-                    </div>
-                </div>
-            }
-        </div>
-
-    </div>
- *@
 
 
 
