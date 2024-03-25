@@ -72,12 +72,18 @@ namespace MVCProject.Controllers
         {
             if (ModelState.IsValid)
             {
+                //check
                 ApplicationUser userModel = await userManager.FindByNameAsync(UserVm.UserName);
                 if (userModel != null)
                 {
                     bool found = await userManager.CheckPasswordAsync(userModel, UserVm.Password);
                     if (found)
                     {
+                        //    await signInMAnager.SignInAsync(userModel, UserVm.RememberMe);
+                        List<Claim> Claims = new List<Claim>();
+                        Claims.Add(new Claim("Address", userModel.Address));
+                        await signInMAnager.SignInWithClaimsAsync
+                            (userModel, UserVm.RememberMe, Claims);
                         IList<string> roles = await userManager.GetRolesAsync(userModel);
                         if (roles.Contains("Admin"))
                         {
@@ -95,6 +101,35 @@ namespace MVCProject.Controllers
             }
             return View(UserVm);
         }
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> Login(LoginViewModel UserVm)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        ApplicationUser userModel = await userManager.FindByNameAsync(UserVm.UserName);
+        //        if (userModel != null)
+        //        {
+        //            bool found = await userManager.CheckPasswordAsync(userModel, UserVm.Password);
+        //            if (found)
+        //            {
+        //                IList<string> roles = await userManager.GetRolesAsync(userModel);
+        //                if (roles.Contains("Admin"))
+        //                {
+        //                    // Redirect to Admin's view
+        //                    return RedirectToAction("Getall", "Admin");
+        //                }
+        //                else
+        //                {
+        //                    // Redirect to User's view
+        //                    return RedirectToAction("Stations", "Trip");
+        //                }
+        //            }
+        //        }
+        //        ModelState.AddModelError("", "Username and password invalid");
+        //    }
+        //    return View(UserVm);
+        //}
         //[HttpPost]
         //[ValidateAntiForgeryToken]
         //public async Task<IActionResult> Login(LoginViewModel UserVm)

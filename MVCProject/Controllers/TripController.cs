@@ -1,10 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using MVCProject.Models;
 using MVCProject.Repositories;
 
 namespace MVCProject.Controllers
 {
+    //[Authorize]
+    [Authorize]
     public class TripController : Controller
     {
         private ITripsRepo tripsRepo;
