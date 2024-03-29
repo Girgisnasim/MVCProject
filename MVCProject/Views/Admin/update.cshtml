@@ -2,50 +2,178 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
-    Layout = "_Layout";
+    Layout = "_Layout1";
 }
 @model Trip
-<form asp-action="update" asp-controller="Admin" method="post">
-    <input type="hidden" asp-for="Id" />
-    <div class="form-group">
-        <label asp-for="Name"></label>
-        <input asp-for="Name" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label asp-for="Location"></label>
-        <input asp-for="Location" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label asp-for="Price"></label>
-        <input asp-for="Price" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label asp-for="Status"></label>
-        <input asp-for="Status" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label asp-for="Arrival_Time"></label>
-        <input asp-for="Arrival_Time" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label asp-for="Departure_Time"></label>
-        <input asp-for="Departure_Time" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label asp-for="Departure_Date"></label>
-        <input asp-for="Departure_Date" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label asp-for="Available_Seats"></label>
-        <input asp-for="Available_Seats" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label asp-for="Total_Seats"></label>
-        <input asp-for="Total_Seats" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label asp-for="image"></label>
-        <input asp-for="image" class="form-control" />
-    </div>
-    <button type="submit" class="btn btn-primary">Add Trip</button>
-</form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+
+        form {
+            border: 2px solid black;
+            width: 550px;
+            margin-left: 32%;
+            margin-top:3%;
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            height: 100%;
+        }
+
+        body {
+            background-image: url("https://tse4.mm.bing.net/th?id=OIP.Fc-u3YM4mYoruJggaB5ErgHaEK&pid=Api&P=0&h=220");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="password"] {
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .signin a {
+            color: antiquewhite;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        button {
+            margin-left: 30px;
+            margin-top: 20px;
+        }
+    </style>
+
+</head>
+<body>
+
+   @*  <h1> New Trip</h1> *@
+    <br />
+
+    <form asp-action="update" asp-controller="Admin" enctype="multipart/form-data" method="post">
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label asp-for="Name"></label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-user"></i></span>
+                    </div>
+                    <input asp-for="Name" class="form-control" />
+                </div>
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <label asp-for="Location"></label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
+                    </div>
+                    <input asp-for="Location" class="form-control" />
+                </div>
+                <span asp-validation-for="Location" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <label asp-for="Price"></label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-dollar-sign"></i></span>
+                    </div>
+                    <input asp-for="Price" class="form-control" />
+                </div>
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <label asp-for="Status"></label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-info-circle"></i></span>
+                    </div>
+                    <input asp-for="Status" class="form-control" />
+                </div>
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <label asp-for="Arrival_Time"></label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-clock"></i></span>
+                    </div>
+                    <input asp-for="Arrival_Time" class="form-control" />
+                </div>
+                <span asp-validation-for="Arrival_Time" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <label asp-for="Departure_Time"></label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-clock"></i></span>
+                    </div>
+                    <input asp-for="Departure_Time" class="form-control" />
+                </div>
+                <span asp-validation-for="Departure_Time" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <label asp-for="Departure_Date"></label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-calendar"></i></span>
+                    </div>
+                    <input asp-for="Departure_Date" class="form-control" />
+                </div>
+                <span asp-validation-for="Departure_Date" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <label asp-for="Available_Seats"></label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-chair"></i></span>
+                    </div>
+                    <input asp-for="Available_Seats" class="form-control" />
+                </div>
+                <span asp-validation-for="Available_Seats" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <label asp-for="Total_Seats"></label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-chair"></i></span>
+                    </div>
+                    <input asp-for="Total_Seats" class="form-control" />
+                </div>
+                <span asp-validation-for="Total_Seats" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <label asp-for="image"></label>
+                <input asp-for="image" type="file" name="image" class="form-control" />
+                <span asp-validation-for="image" class="text-danger"></span>
+            </div>
+           
+        </div>
+        <br />
+        <button type="submit" class="btn btn-outline-primary">Edit Trip</button>
+
+
+    </form>
+    <button onclick="window.location.href='/Admin/Getall'" class="btn btn-outline-light"> Back To Trips</button>
+
+    <br />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.3/umd/popper.min.js"></script>
+    <script src="~/js/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

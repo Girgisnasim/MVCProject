@@ -2,17 +2,44 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
-    Layout = "_Layout";
+    Layout = "_Layout1";
 }
 @model SelectList
-<h5>Select The City  </h5>
+<head>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <style>
+        body {
+            background-image: url("https://tse3.mm.bing.net/th?id=OIP.zKZE5ragNQSvnQqX4XeeaQHaEo&pid=Api&P=0&h=220");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 4%;
+        }
+        .form-select{
+            width:800px;
+            height:40px;
+            margin-left:20%;
+        }
+        button{
+            margin-left: 20%;
+        }
+    </style>
+</head>
+<body>
+<h1>Find Distenation  </h1>
+
 <select class="form-select"  asp-items="@Model" onchange="GetStation(this.value)">
  
 
 </select>
-<br />
-<br />
+
+
 <div class="container">
+    <br />
     <div id="Station" class="row justify-content-center">
         @foreach (var t in ViewBag.AllTrips)
         {
@@ -40,27 +67,12 @@
                     <a class="btn btn-outline-light" href="~/Tickets/GetTrip/@t.Id">Book Now!</a>
                 </div>
             </div>
-           @*  <div class="col-lg-3 col-md-6 col-sm-12 m-2">
-                <div class="card" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
-                    <img src="~/images/@t.image" class="card-img-top" style="height: 200px; object-fit: cover;" alt="Trip Image">
-                    <div class="card-body">
-                        <h5 class="card-title">@t.Name</h5>
-                        <p class="card-text"><strong>Location:</strong> @t.Location</p>
-                        <p class="card-text"><strong>Status:</strong> @t.Status</p>
-                        <p class="card-text"><strong>Total Seats:</strong></p>
-                        <p class="card-text"><strong>Available Seats:</strong> @t.Available_Seats</p>
-                        <p class="card-text"><strong>Price:</strong> $@t.Price</p>
-                        <p class="card-text"><strong>Arrival Time:</strong> @t.Arrival_Time</p>
-                        <p class="card-text"><strong>Departure Date:</strong> @t.Departure_Date</p>
-                        <a class="btn btn-success" href="~/Tickets/GetTrip/@t.Id">Book Now!</a>
-                    </div>
-                </div>
-            </div> *@
+       
         }
     </div>
 </div>
-<button onclick="window.location.href='http://localhost:5199/'" class="btn btn-outline-primary"> Back </button>
-
+    <button onclick="window.location.href='http://localhost:5199/'" class="btn btn-outline-primary"> Back</button>
+</body>
 @section Station{
         
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
