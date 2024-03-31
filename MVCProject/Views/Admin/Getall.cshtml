@@ -4,16 +4,28 @@
  @{
     Layout = "_Layout1";
     bool isAdmin = User.IsInRole("Admin");
-    // int i=1;
+   
 }
 @model List<Trip>
 
 <head>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+    <style>
+        body{
+            background-image: url("https://tse3.mm.bing.net/th?id=OIP.zKZE5ragNQSvnQqX4XeeaQHaEo&pid=Api&P=0&h=220");
+            background-repeat:no-repeat;
+            background-size:cover;
+        }
+        h1{
+           text-align:center;
+           margin-top:4%;
+        }
+    </style>
 </head>
-
-
+<body>
+   <h1> ALL Packages</h1>
+   <br />
 <div class="container"style="width:100%">
     <div class="row">
         @foreach (var item in Model)
@@ -49,10 +61,12 @@
     </div>
     @if (isAdmin)
  {
-    <button onclick="window.location.href='/Admin/Add'" class="btn btn-outline-primary"> Add Trip </button>
+    <button onclick="window.location.href='/Admin/Add'" class="btn btn-outline-primary"> Add New Trip </button>
+ 
     <button onclick="window.location.href='http://localhost:5199/'" class="btn btn-outline-primary"> Back </button>
  }
 </div>
+</body>
 
 
 

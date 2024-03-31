@@ -9,5 +9,10 @@
     <div>
         @RenderBody()
     </div>
+   
+    @await RenderSectionAsync("Scripts", required: false)
+
+    @await RenderSectionAsync("Station", required: false)
+
 </body>
 </html>
